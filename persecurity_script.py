@@ -41,10 +41,10 @@ if datekey in content:
 q = nse.get_quote(symbol)
 price = q["pricebandupper"]
 
-check_file_append = open("file.txt","+a")
+check_file_append = open("file.txt","w+")
 
 if price >= high or price <=low:
-    check_file_append.write(datekey)
+    check_file_append.write("\n"+datekey)
     if notification_type==1:
         smsMethod(str(price),contact_number)
     elif notification_type == 2:
