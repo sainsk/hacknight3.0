@@ -1,7 +1,7 @@
 from nsetools import Nse
 import requests
 import sys
-
+path="/opt/HackNight/hacknight3.0/"
 def smsMethod(cmp,contact):
    API_ENDPOINT = "https://alerts.solutionsinfini.com//api/v4/index.php"
    data = {'method': 'sms',
@@ -32,7 +32,7 @@ low = int(sys.argv[4])
 notification_type = int(sys.argv[5])
 datekey = sys.argv[6]
 
-check_file = open("file.txt","r")
+check_file = open(path+"file.txt","r")
 content  = check_file.readlines()
 
 if datekey in content:
@@ -41,7 +41,7 @@ if datekey in content:
 q = nse.get_quote(symbol)
 price = q["pricebandupper"]
 
-check_file_append = open("file.txt","w+")
+check_file_append = open(path+"file.txt","w+")
 
 if price >= high or price <=low:
     check_file_append.write("\n"+datekey)
